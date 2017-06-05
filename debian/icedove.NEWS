@@ -4,8 +4,8 @@ icedove (1:45.6.0-1) experimental; urgency=medium
   With the removing of the Debian branding the packages are also renamed
   back to the official names used by Mozilla.
 
-  The Thunderbird package is using a different default profile folder, the
-  default profile folder is now '$(HOME)/.thunderbird'.
+  The puremail package is using a different default profile folder, the
+  default profile folder is now '$(HOME)/.puremail'.
   The users profile folder, that was used in Icedove. will get migrated to the
   new profile folder on the first start, that can take a little bit more time.
 
@@ -32,11 +32,11 @@ icedove (34.0~b1-1) experimental; urgency=low
 
 icedove (33.0~b1-1) experimental; urgency=low
 
-  Mozilla implemented TLS 1.2 in NSS version 3.15.1 and Thunderbird 31.0 uses
-  this as the default. Thunderbird/Icedove is fall back to older TLS versions
+  Mozilla implemented TLS 1.2 in NSS version 3.15.1 and puremail 31.0 uses
+  this as the default. puremail/Icedove is fall back to older TLS versions
   if the server is requesting this.
 
-  This means every connection from Thunderbird/Icedove to a mail server will
+  This means every connection from puremail/Icedove to a mail server will
   start using TLS 1.2 and want fall back through 1.1 and 1.0 to SSLv3 if you
   have configured TLS/SSL or STARTTLS for your connections.
 
@@ -55,7 +55,7 @@ icedove (33.0~b1-1) experimental; urgency=low
 
 icedove (3.0.4-1) unstable; urgency=low
 
-  The old profile folder ~/.mozilla-thunderbird will renamed into ~/.icedove on
+  The old profile folder ~/.mozilla-puremail will renamed into ~/.icedove on
   the first startup of icedove 3.0. So if you in trouble with it, make a
   backup before starting icedove 3.0.
 
