@@ -45,12 +45,12 @@ Usage: ${0##*/} [-h|-vd] [-e BETA_VER] VERSION
 Examples:
   ${0##*/} -d 45.1
     Download version '45.1' of the Lightning l10n packages from Mozilla and creates
-    a file 'thunderbird-45.1.orig-lightning-l10n.tar.xz' that can be imported with
+    a file 'puremail-45.1.orig-lightning-l10n.tar.xz' that can be imported with
     'git-import-orig'.
 
   ${0##*/} -de 45.1b1 45.1~b1
     Download the beta version '45.1b1' of the Lightning l10n packages from Mozilla
-    and created a file 'thunderbird-45.1~b1.orig-lightning-l10n.tar.xz'. This file can be
+    and created a file 'puremail-45.1~b1.orig-lightning-l10n.tar.xz'. This file can be
     automatically imported with 'git-import-orig'.
 
 EOF
@@ -245,8 +245,8 @@ for i in ${LANG}; do
     mv ${UNPACKDIR}${i}/chrome/lightning-${i}/locale/${i}/lightning ${TARGET_DIR}
 done
 
-debug "creating 'thunderbird_${VERSION}.orig-${BASE_PKG}.tar.xz'"
-TARBALL="../thunderbird_${VERSION}.orig-${BASE_PKG}.tar.xz"
+debug "creating 'puremail_${VERSION}.orig-${BASE_PKG}.tar.xz'"
+TARBALL="../puremail_${VERSION}.orig-${BASE_PKG}.tar.xz"
 cd ${ORIGDIR}/..
 tar Jcf ${TARBALL} ${BASE_PKG}
 TARBALL=$(readlink -f ${TARBALL})
@@ -261,7 +261,7 @@ LANG_COUNT=`ls -l ${ORIGDIR} | wc -l`
 # moving *-orig-*.tar.xz back
 cd ${CURDIR_FULL}
 mv $TARBALL ../
-TARBALL=$(readlink -f ../thunderbird_${VERSION}.orig-${BASE_PKG}.tar.xz)
+TARBALL=$(readlink -f ../puremail_${VERSION}.orig-${BASE_PKG}.tar.xz)
 echo
 echo "Tarball created in:"
 echo "  -> ${TARBALL} <-"
