@@ -53,11 +53,10 @@ Build-Depends:
  zlib1g-dev,
 Vcs-Git: https://anonscm.debian.org/cgit/pkg-mozilla/icedove.git
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-mozilla/icedove.git
-Homepage: http://www.mozilla.org/thunderbird/
-X-Debian-Homepage: http://wiki.debian.org/Icedove
+Debian-Homepage: http://wiki.debian.org/Icedove
 Standards-Version: 3.9.8
 
-Package: thunderbird
+Package: puremail
 Architecture: any
 Depends:
  debianutils (>= 1.16),
@@ -150,15 +149,15 @@ Breaks:
  xul-ext-compactheader (<< 2.1.0~),
  xul-ext-foxyproxy-standard (<< 4.5.6-debian-2~),
 Description: mail/news client with RSS, chat and integrated spam filter support
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  It supports different mail accounts, no matter of the used protocol like
  POP(s) or IMAP(s), has an integrated learning Spam filter, and offers easy
  organization of mails with tagging and virtual folders. Also, more features
  can be added by installing extensions.
  .
- The goal of Thunderbird is to produce a cross platform standalone mail
+ The goal of puremail is to produce a cross platform standalone mail
  application using the XUL user interface language.
 
 Package: icedove
@@ -166,10 +165,10 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird,
+ puremail,
  ${misc:Depends},
 Description: mail/news client with RSS and integrated spam filter support
- Icedove is an unbranded Thunderbird mail client suitable for free
+ Icedove is an unbranded puremail mail client suitable for free
  distribution. It supports different mail accounts (POP, IMAP, Gmail), has an
  integrated learning Spam filter, and offers easy organization of mails with
  tagging and virtual folders. Also, more features can be added by installing
@@ -180,10 +179,10 @@ Description: mail/news client with RSS and integrated spam filter support
  .
  This is a transitional package. It can be safely removed.
 
-Package: thunderbird-dev
+Package: puremail-dev
 Architecture: any
 Depends:
- thunderbird (= ${binary:Version}),
+ puremail (= ${binary:Version}),
  libnspr4-dev,
  libnss3-dev,
  python,
@@ -195,9 +194,9 @@ Breaks:
  icedove-dev (<< 1:45.6.0-2.1~),
 Provides:
  icedove-dev,
-Description: Development files for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Development files for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  It supports different mail accounts, no matter of the used protocol like
  POP(s) or IMAP(s), has an integrated learning Spam filter, and offers easy
@@ -205,17 +204,17 @@ Description: Development files for Thunderbird
  can be added by installing extensions.
  .
  This package contains the development headers, idl files and static libraries
- needed to develop applications using Thunderbird.
+ needed to develop applications using puremail.
 
 Package: icedove-dev
 Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-dev,
+ puremail-dev,
  ${misc:Depends},
 Description: Development files for Icedove
- Icedove is an unbranded Thunderbird mail client suitable for free
+ Icedove is an unbranded puremail mail client suitable for free
  distribution. It supports different mail accounts (POP, IMAP, Gmail), has an
  integrated learning Spam filter, and offers easy organization of mails with
  tagging and virtual folders. Also, more features can be added by installing
@@ -226,12 +225,12 @@ Description: Development files for Icedove
  .
  This is a transitional package. It can be safely removed.
 
-Package: thunderbird-dbg
+Package: puremail-dbg
 Architecture: any
 Priority: extra
 Section: debug
 Depends:
- thunderbird (= ${binary:Version}),
+ puremail (= ${binary:Version}),
  ${misc:Depends},
 Replaces:
  icedove-dbg (<< 1:45.6.0-2.1~),
@@ -239,16 +238,16 @@ Breaks:
  icedove-dbg (<< 1:45.6.0-2.1~),
 Provides:
  icedove-dbg,
-Description: Debug Symbols for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Debug Symbols for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  It supports different mail accounts, no matter of the used protocol like
  POP(s) or IMAP(s), has an integrated learning Spam filter, and offers easy
  organization of mails with tagging and virtual folders. Also, more features
  can be added by installing extensions.
  .
- This package contains the debug symbols for Thunderbird. Install this package
+ This package contains the debug symbols for puremail. Install this package
  if you need to debug such a program or if you need a useful backtrace of a
  crash.
 
@@ -257,10 +256,10 @@ Architecture: all
 Priority: extra
 Section: oldlibs
 Depends:
- thunderbird-dbg,
+ puremail-dbg,
  ${misc:Depends},
 Description: Debug Symbols for Icedove
- Icedove is an unbranded Thunderbird mail client suitable for free
+ Icedove is an unbranded puremail mail client suitable for free
  distribution. It supports different mail accounts (POP, IMAP, Gmail), has an
  integrated learning Spam filter, and offers easy organization of mails with
  tagging and virtual folders. Also, more features can be added by installing
@@ -275,7 +274,7 @@ Description: Debug Symbols for Icedove
 Package: lightning
 Architecture: any
 Depends:
- thunderbird (>= ${binary:Version}),
+ puremail (>= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends},
 Suggests:
@@ -290,8 +289,8 @@ Breaks:
 Replaces:
  calendar-timezones,
  iceowl-extension (<< 1:45.6.0-2.1~),
-Description: Calendar Extension for Thunderbird
- Lightning is a calendar extension for Thunderbird. It can handle events,
+Description: Calendar Extension for puremail
+ Lightning is a calendar extension for puremail. It can handle events,
  event invitations and tasks in multiple calendars.
  .
  It supports local calendars, CalDAV and plain ics files on CardDAV and WebDAV.
@@ -303,9 +302,9 @@ Priority: extra
 Depends:
  lightning,
  ${misc:Depends},
-Description: Calendar Extension for Thunderbird/Icedove
+Description: Calendar Extension for puremail/Icedove
  Iceowl Extension is an unbranded Lightning Calendar extension for
- Thunderbird/Icedove. It can handle events, event invitations and
+ puremail/Icedove. It can handle events, event invitations and
  tasks in multiple calendars.
  .
  It supports local calendars, CalDAV and plain ics files on WebDAV.
@@ -318,73 +317,73 @@ Depends:
  lightning (>= ${binary:Version}),
  ${misc:Depends},
 Enhances:
- thunderbird,
+ puremail,
  lightning,
 Description: Google Calendar support for lightning
- This extension adds support for accessing google calendars in Thunderbird
+ This extension adds support for accessing google calendars in puremail
  via lightning.
  .
- It's a recommended component if you want to connect Thunderbird to your
+ It's a recommended component if you want to connect puremail to your
  Google calendar.
 
-Package: thunderbird-l10n-all
+Package: puremail-l10n-all
 Architecture: all
 Section: metapackages
 Depends:
- thunderbird-l10n-ar,
- thunderbird-l10n-ast,
- thunderbird-l10n-be,
- thunderbird-l10n-bg,
- thunderbird-l10n-bn-bd,
- thunderbird-l10n-br,
- thunderbird-l10n-ca,
- thunderbird-l10n-cs,
- thunderbird-l10n-da,
- thunderbird-l10n-de,
- thunderbird-l10n-el,
- thunderbird-l10n-en-gb,
- thunderbird-l10n-es-ar,
- thunderbird-l10n-es-es,
- thunderbird-l10n-et,
- thunderbird-l10n-eu,
- thunderbird-l10n-fi,
- thunderbird-l10n-fr,
- thunderbird-l10n-fy-nl,
- thunderbird-l10n-ga-ie,
- thunderbird-l10n-gd,
- thunderbird-l10n-gl,
- thunderbird-l10n-he,
- thunderbird-l10n-hr,
- thunderbird-l10n-hu,
- thunderbird-l10n-hy-am,
- thunderbird-l10n-id,
- thunderbird-l10n-is,
- thunderbird-l10n-it,
- thunderbird-l10n-ja,
- thunderbird-l10n-ko,
- thunderbird-l10n-lt,
- thunderbird-l10n-nb-no,
- thunderbird-l10n-nl,
- thunderbird-l10n-nn-no,
- thunderbird-l10n-pa-in,
- thunderbird-l10n-pl,
- thunderbird-l10n-pt-br,
- thunderbird-l10n-pt-pt,
- thunderbird-l10n-rm,
- thunderbird-l10n-ro,
- thunderbird-l10n-ru,
- thunderbird-l10n-si,
- thunderbird-l10n-sk,
- thunderbird-l10n-sl,
- thunderbird-l10n-sq,
- thunderbird-l10n-sr,
- thunderbird-l10n-sv-se,
- thunderbird-l10n-ta-lk,
- thunderbird-l10n-tr,
- thunderbird-l10n-uk,
- thunderbird-l10n-vi,
- thunderbird-l10n-zh-cn,
- thunderbird-l10n-zh-tw,
+ puremail-l10n-ar,
+ puremail-l10n-ast,
+ puremail-l10n-be,
+ puremail-l10n-bg,
+ puremail-l10n-bn-bd,
+ puremail-l10n-br,
+ puremail-l10n-ca,
+ puremail-l10n-cs,
+ puremail-l10n-da,
+ puremail-l10n-de,
+ puremail-l10n-el,
+ puremail-l10n-en-gb,
+ puremail-l10n-es-ar,
+ puremail-l10n-es-es,
+ puremail-l10n-et,
+ puremail-l10n-eu,
+ puremail-l10n-fi,
+ puremail-l10n-fr,
+ puremail-l10n-fy-nl,
+ puremail-l10n-ga-ie,
+ puremail-l10n-gd,
+ puremail-l10n-gl,
+ puremail-l10n-he,
+ puremail-l10n-hr,
+ puremail-l10n-hu,
+ puremail-l10n-hy-am,
+ puremail-l10n-id,
+ puremail-l10n-is,
+ puremail-l10n-it,
+ puremail-l10n-ja,
+ puremail-l10n-ko,
+ puremail-l10n-lt,
+ puremail-l10n-nb-no,
+ puremail-l10n-nl,
+ puremail-l10n-nn-no,
+ puremail-l10n-pa-in,
+ puremail-l10n-pl,
+ puremail-l10n-pt-br,
+ puremail-l10n-pt-pt,
+ puremail-l10n-rm,
+ puremail-l10n-ro,
+ puremail-l10n-ru,
+ puremail-l10n-si,
+ puremail-l10n-sk,
+ puremail-l10n-sl,
+ puremail-l10n-sq,
+ puremail-l10n-sr,
+ puremail-l10n-sv-se,
+ puremail-l10n-ta-lk,
+ puremail-l10n-tr,
+ puremail-l10n-uk,
+ puremail-l10n-vi,
+ puremail-l10n-zh-cn,
+ puremail-l10n-zh-tw,
  ${misc:Depends},
 Replaces:
  icedove-l10n-all (<< 1:45.6.0-2.1~),
@@ -392,20 +391,20 @@ Breaks:
  icedove-l10n-all (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-all,
-Description: All language packages for Thunderbird (meta)
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: All language packages for puremail (meta)
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
  This package is a metapackage depending on all available localization of
- Thunderbird.
+ puremail.
 
-Package: thunderbird-l10n-ar
+Package: puremail-l10n-ar
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ar
 Recommends:
@@ -416,19 +415,19 @@ Breaks:
  icedove-l10n-ar (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-ar,
-Description: Arabic language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Arabic language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Arabic.
+ This package contains the localization of puremail in Arabic.
 
-Package: thunderbird-l10n-ast
+Package: puremail-l10n-ast
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ast
 Replaces:
@@ -437,19 +436,19 @@ Breaks:
  icedove-l10n-ast (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-ast,
-Description: Asturian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Asturian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Asturian.
+ This package contains the localization of puremail in Asturian.
 
-Package: thunderbird-l10n-be
+Package: puremail-l10n-be
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:be
 Recommends:
@@ -460,19 +459,19 @@ Breaks:
  icedove-l10n-be (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-be,
-Description: Belarusian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Belarusian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Belarusian.
+ This package contains the localization of puremail in Belarusian.
 
-Package: thunderbird-l10n-bg
+Package: puremail-l10n-bg
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:bg
 Recommends:
@@ -483,19 +482,19 @@ Breaks:
  icedove-l10n-bg (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-bg,
-Description: Bulgarian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Bulgarian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Bulgarian.
+ This package contains the localization of puremail in Bulgarian.
 
-Package: thunderbird-l10n-bn-bd
+Package: puremail-l10n-bn-bd
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:bd-BD
 Recommends:
@@ -506,19 +505,19 @@ Breaks:
  icedove-l10n-bn-bd (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-bn-bd,
-Description: Bengali language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Bengali language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Bengali.
+ This package contains the localization of puremail in Bengali.
 
-Package: thunderbird-l10n-br
+Package: puremail-l10n-br
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:br
 Recommends:
@@ -529,19 +528,19 @@ Breaks:
  icedove-l10n-br (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-br,
-Description: Breton language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Breton language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Breton.
+ This package contains the localization of puremail in Breton.
 
-Package: thunderbird-l10n-ca
+Package: puremail-l10n-ca
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ca
 Recommends:
@@ -552,19 +551,19 @@ Breaks:
  icedove-l10n-ca (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-ca,
-Description: Catalan/Valencian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Catalan/Valencian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Catalan/Valencian.
+ This package contains the localization of puremail in Catalan/Valencian.
 
-Package: thunderbird-l10n-cs
+Package: puremail-l10n-cs
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:cs
 Recommends:
@@ -575,19 +574,19 @@ Breaks:
  icedove-l10n-cs (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-cs,
-Description: Czech language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Czech language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Czech.
+ This package contains the localization of puremail in Czech.
 
-Package: thunderbird-l10n-da
+Package: puremail-l10n-da
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:da
 Recommends:
@@ -598,19 +597,19 @@ Breaks:
  icedove-l10n-da (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-da,
-Description: Danish language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Danish language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Danish.
+ This package contains the localization of puremail in Danish.
 
-Package: thunderbird-l10n-de
+Package: puremail-l10n-de
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:de
 Recommends:
@@ -621,19 +620,19 @@ Breaks:
  icedove-l10n-de (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-de,
-Description: German language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: German language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in German.
+ This package contains the localization of puremail in German.
 
-Package: thunderbird-l10n-el
+Package: puremail-l10n-el
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:el
 Recommends:
@@ -644,19 +643,19 @@ Breaks:
  icedove-l10n-el (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-el,
-Description: Greek language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Greek language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Greek.
+ This package contains the localization of puremail in Greek.
 
-Package: thunderbird-l10n-en-gb
+Package: puremail-l10n-en-gb
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:en-GB
 Recommends:
@@ -667,20 +666,20 @@ Breaks:
  icedove-l10n-en-gb (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-en-gb,
-Description: English (Great Britain) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: English (Great Britain) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in English (Great
+ This package contains the localization of puremail in English (Great
  Britain).
 
-Package: thunderbird-l10n-es-ar
+Package: puremail-l10n-es-ar
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:es-AR
 Recommends:
@@ -691,19 +690,19 @@ Breaks:
  icedove-l10n-es-ar (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-es-ar,
-Description: Spanish (Argentina) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Spanish (Argentina) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Spanish (Argentina).
+ This package contains the localization of puremail in Spanish (Argentina).
 
-Package: thunderbird-l10n-es-es
+Package: puremail-l10n-es-es
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:es-ES
 Recommends:
@@ -714,19 +713,19 @@ Breaks:
  icedove-l10n-es-es (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-es-es,
-Description: Spanish (Spain) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Spanish (Spain) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Spanish (Spain).
+ This package contains the localization of puremail in Spanish (Spain).
 
-Package: thunderbird-l10n-et
+Package: puremail-l10n-et
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:et
 Recommends:
@@ -737,19 +736,19 @@ Breaks:
  icedove-l10n-et (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-et,
-Description: Estonian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Estonian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Estonian.
+ This package contains the localization of puremail in Estonian.
 
-Package: thunderbird-l10n-eu
+Package: puremail-l10n-eu
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:eu
 Recommends:
@@ -760,19 +759,19 @@ Breaks:
  icedove-l10n-eu (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-eu,
-Description: Basque language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Basque language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Basque.
+ This package contains the localization of puremail in Basque.
 
-Package: thunderbird-l10n-fi
+Package: puremail-l10n-fi
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:fi
 Recommends:
@@ -784,19 +783,19 @@ Breaks:
  icedove-l10n-fi (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-fi,
-Description: Finnish language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Finnish language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Finnish.
+ This package contains the localization of puremail in Finnish.
 
-Package: thunderbird-l10n-fr
+Package: puremail-l10n-fr
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:fr
 Recommends:
@@ -807,19 +806,19 @@ Breaks:
  icedove-l10n-fr (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-fr,
-Description: French language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: French language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in French.
+ This package contains the localization of puremail in French.
 
-Package: thunderbird-l10n-fy-nl
+Package: puremail-l10n-fy-nl
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:fy-NL
 Replaces:
@@ -828,19 +827,19 @@ Breaks:
  icedove-l10n-fy-nl (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-fy-nl,
-Description: Frisian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Frisian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Frisian.
+ This package contains the localization of puremail in Frisian.
 
-Package: thunderbird-l10n-ga-ie
+Package: puremail-l10n-ga-ie
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ga-IE
 Replaces:
@@ -849,19 +848,19 @@ Breaks:
  icedove-l10n-ga-ie (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-ga-ie,
-Description: Irish (Ireland) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Irish (Ireland) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Irish (Ireland).
+ This package contains the localization of puremail in Irish (Ireland).
 
-Package: thunderbird-l10n-gd
+Package: puremail-l10n-gd
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:gd
 Recommends:
@@ -872,19 +871,19 @@ Breaks:
  icedove-l10n-gd (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-gd,
-Description: Gaelic (Scottish) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Gaelic (Scottish) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Gaelic (Scottish).
+ This package contains the localization of puremail in Gaelic (Scottish).
 
-Package: thunderbird-l10n-gl
+Package: puremail-l10n-gl
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:gl
 Recommends:
@@ -895,19 +894,19 @@ Breaks:
  icedove-l10n-gl (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-gl,
-Description: Galician language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Galician language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Galician.
+ This package contains the localization of puremail in Galician.
 
-Package: thunderbird-l10n-he
+Package: puremail-l10n-he
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:he
 Recommends:
@@ -918,19 +917,19 @@ Breaks:
  icedove-l10n-he (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-he,
-Description: Hebrew language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Hebrew language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Hebrew.
+ This package contains the localization of puremail in Hebrew.
 
-Package: thunderbird-l10n-hr
+Package: puremail-l10n-hr
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:hr
 Recommends:
@@ -941,19 +940,19 @@ Breaks:
  icedove-l10n-hr (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-hr,
-Description: Croatian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Croatian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Croatian.
+ This package contains the localization of puremail in Croatian.
 
-Package: thunderbird-l10n-hu
+Package: puremail-l10n-hu
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:hu
 Recommends:
@@ -964,19 +963,19 @@ Breaks:
  icedove-l10n-hu (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-hu,
-Description: Hungarian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Hungarian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Hungarian.
+ This package contains the localization of puremail in Hungarian.
 
-Package: thunderbird-l10n-hy-am
+Package: puremail-l10n-hy-am
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:hy-AM
 Recommends:
@@ -987,19 +986,19 @@ Breaks:
  icedove-l10n-hy-am (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-hy-am,
-Description: Armenian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Armenian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Armenian.
+ This package contains the localization of puremail in Armenian.
 
-Package: thunderbird-l10n-id
+Package: puremail-l10n-id
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:id
 Replaces:
@@ -1008,19 +1007,19 @@ Breaks:
  icedove-l10n-id (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-id,
-Description: Indonesian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Indonesian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Indonesian.
+ This package contains the localization of puremail in Indonesian.
 
-Package: thunderbird-l10n-is
+Package: puremail-l10n-is
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:is
 Recommends:
@@ -1031,19 +1030,19 @@ Breaks:
  icedove-l10n-is (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-is,
-Description: Icelandic language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Icelandic language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Icelandic.
+ This package contains the localization of puremail in Icelandic.
 
-Package: thunderbird-l10n-it
+Package: puremail-l10n-it
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:it
 Recommends:
@@ -1054,19 +1053,19 @@ Breaks:
  icedove-l10n-it (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-it,
-Description: Italian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Italian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Italian.
+ This package contains the localization of puremail in Italian.
 
-Package: thunderbird-l10n-ja
+Package: puremail-l10n-ja
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ja
 Replaces:
@@ -1075,19 +1074,19 @@ Breaks:
  icedove-l10n-ja (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-ja,
-Description: Japanese language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Japanese language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Japanese.
+ This package contains the localization of puremail in Japanese.
 
-Package: thunderbird-l10n-ko
+Package: puremail-l10n-ko
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ko
 Recommends:
@@ -1098,19 +1097,19 @@ Breaks:
  icedove-l10n-ko (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-ko,
-Description: Korean language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Korean language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Korean.
+ This package contains the localization of puremail in Korean.
 
-Package: thunderbird-l10n-lt
+Package: puremail-l10n-lt
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:lt
 Recommends:
@@ -1121,19 +1120,19 @@ Breaks:
  icedove-l10n-lt (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-lt,
-Description: Lithuanian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Lithuanian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Lithuanian.
+ This package contains the localization of puremail in Lithuanian.
 
-Package: thunderbird-l10n-nb-no
+Package: puremail-l10n-nb-no
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:nb-NO
 Recommends:
@@ -1144,19 +1143,19 @@ Breaks:
  icedove-l10n-nb-no (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-nb-no,
-Description: Bokmaal (Norway) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Bokmaal (Norway) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Bokmaal (Norway).
+ This package contains the localization of puremail in Bokmaal (Norway).
 
-Package: thunderbird-l10n-nl
+Package: puremail-l10n-nl
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:nl
 Recommends:
@@ -1167,19 +1166,19 @@ Breaks:
  icedove-l10n-nl (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-nl,
-Description: Dutch language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Dutch language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Dutch.
+ This package contains the localization of puremail in Dutch.
 
-Package: thunderbird-l10n-nn-no
+Package: puremail-l10n-nn-no
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:nn-NO
 Recommends:
@@ -1190,19 +1189,19 @@ Breaks:
  icedove-l10n-nn-no (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-nn-no,
-Description: Nynorsk (Norway) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Nynorsk (Norway) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Nynorsk (Norway).
+ This package contains the localization of puremail in Nynorsk (Norway).
 
-Package: thunderbird-l10n-pa-in
+Package: puremail-l10n-pa-in
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:pa
 Replaces:
@@ -1211,19 +1210,19 @@ Breaks:
  icedove-l10n-pa-in (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-pa-in,
-Description: Punjabi (India) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Punjabi (India) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Punjabi (India).
+ This package contains the localization of puremail in Punjabi (India).
 
-Package: thunderbird-l10n-pl
+Package: puremail-l10n-pl
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:pl
 Recommends:
@@ -1234,19 +1233,19 @@ Breaks:
  icedove-l10n-pl (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-pl,
-Description: Polish language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Polish language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Polish.
+ This package contains the localization of puremail in Polish.
 
-Package: thunderbird-l10n-pt-br
+Package: puremail-l10n-pt-br
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:pt-BR
 Recommends:
@@ -1257,19 +1256,19 @@ Breaks:
  icedove-l10n-pt-br (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-pt-br,
-Description: Portuguese (Brazil) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Portuguese (Brazil) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Portuguese (Brazil).
+ This package contains the localization of puremail in Portuguese (Brazil).
 
-Package: thunderbird-l10n-pt-pt
+Package: puremail-l10n-pt-pt
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:pt-PT
 Recommends:
@@ -1280,19 +1279,19 @@ Breaks:
  icedove-l10n-pt-pt (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-pt-pt,
-Description: Portuguese (Portugal) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Portuguese (Portugal) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Portuguese (Portugal).
+ This package contains the localization of puremail in Portuguese (Portugal).
 
-Package: thunderbird-l10n-rm
+Package: puremail-l10n-rm
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:rm
 Replaces:
@@ -1301,19 +1300,19 @@ Breaks:
  icedove-l10n-rm (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-rm,
-Description: Romansh language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Romansh language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Romansh.
+ This package contains the localization of puremail in Romansh.
 
-Package: thunderbird-l10n-ro
+Package: puremail-l10n-ro
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ro
 Recommends:
@@ -1324,19 +1323,19 @@ Breaks:
  icedove-l10n-ro (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-ro,
-Description: Romania language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Romania language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Romania.
+ This package contains the localization of puremail in Romania.
 
-Package: thunderbird-l10n-ru
+Package: puremail-l10n-ru
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ru
 Recommends:
@@ -1347,19 +1346,19 @@ Breaks:
  icedove-l10n-ru (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-ru,
-Description: Russian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Russian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Russian.
+ This package contains the localization of puremail in Russian.
 
-Package: thunderbird-l10n-si
+Package: puremail-l10n-si
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:si
 Recommends:
@@ -1370,19 +1369,19 @@ Breaks:
  icedove-l10n-si (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-si,
-Description: Sinhala language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Sinhala language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Sinhala.
+ This package contains the localization of puremail in Sinhala.
 
-Package: thunderbird-l10n-sk
+Package: puremail-l10n-sk
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:sk
 Recommends:
@@ -1393,19 +1392,19 @@ Breaks:
  icedove-l10n-sk (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-sk,
-Description: Slovak language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Slovak language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Slovak.
+ This package contains the localization of puremail in Slovak.
 
-Package: thunderbird-l10n-sl
+Package: puremail-l10n-sl
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:sl
 Recommends:
@@ -1416,19 +1415,19 @@ Breaks:
  icedove-l10n-sl (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-sl,
-Description: Slovenian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Slovenian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Slovenian.
+ This package contains the localization of puremail in Slovenian.
 
-Package: thunderbird-l10n-sq
+Package: puremail-l10n-sq
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:sq
 Replaces:
@@ -1437,19 +1436,19 @@ Breaks:
  icedove-l10n-sq (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-sq,
-Description: Albanian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Albanian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Albanian.
+ This package contains the localization of puremail in Albanian.
 
-Package: thunderbird-l10n-sr
+Package: puremail-l10n-sr
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:sr
 Recommends:
@@ -1460,19 +1459,19 @@ Breaks:
  icedove-l10n-sr (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-sr,
-Description: Serbian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Serbian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Serbian.
+ This package contains the localization of puremail in Serbian.
 
-Package: thunderbird-l10n-sv-se
+Package: puremail-l10n-sv-se
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:sv-SE
 Recommends:
@@ -1483,19 +1482,19 @@ Breaks:
  icedove-l10n-sv-se (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-sv-se,
-Description: Swedish (Sweden) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Swedish (Sweden) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Swedish (Sweden).
+ This package contains the localization of puremail in Swedish (Sweden).
 
-Package: thunderbird-l10n-ta-lk
+Package: puremail-l10n-ta-lk
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ta-LK
 Replaces:
@@ -1504,19 +1503,19 @@ Breaks:
  icedove-l10n-ta-lk (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-ta-lk,
-Description: Tamil language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Tamil language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Tamil.
+ This package contains the localization of puremail in Tamil.
 
-Package: thunderbird-l10n-tr
+Package: puremail-l10n-tr
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:tr
 Replaces:
@@ -1525,19 +1524,19 @@ Breaks:
  icedove-l10n-tr (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-tr,
-Description: Turkish language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Turkish language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Turkish.
+ This package contains the localization of puremail in Turkish.
 
-Package: thunderbird-l10n-uk
+Package: puremail-l10n-uk
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:uk
 Recommends:
@@ -1548,19 +1547,19 @@ Breaks:
  icedove-l10n-uk (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-uk,
-Description: Ukrainian language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Ukrainian language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Ukrainian.
+ This package contains the localization of puremail in Ukrainian.
 
-Package: thunderbird-l10n-vi
+Package: puremail-l10n-vi
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:vi
 Recommends:
@@ -1571,19 +1570,19 @@ Breaks:
  icedove-l10n-vi (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-vi,
-Description: Vietnamese language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Vietnamese language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Vietnamese.
+ This package contains the localization of puremail in Vietnamese.
 
-Package: thunderbird-l10n-zh-cn
+Package: puremail-l10n-zh-cn
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:zh-CN
 Replaces:
@@ -1592,19 +1591,19 @@ Breaks:
  icedove-l10n-zh-cn (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-th-cn,
-Description: Chinese (China) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Chinese (China) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Chinese (China).
+ This package contains the localization of puremail in Chinese (China).
 
-Package: thunderbird-l10n-zh-tw
+Package: puremail-l10n-zh-tw
 Architecture: all
 Section: localization
 Depends:
- thunderbird (<< ${source:Version}.1~),
- thunderbird (>= ${source:Version}),
+ puremail (<< ${source:Version}.1~),
+ puremail (>= ${source:Version}),
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:zh-TW
 Replaces:
@@ -1613,27 +1612,27 @@ Breaks:
  icedove-l10n-zh-tw (<< 1:45.6.0-2.1~),
 Provides:
  icedove-l10n-zh-tw,
-Description: Chinese (Taiwan) language package for Thunderbird
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+Description: Chinese (Taiwan) language package for puremail
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
- This package contains the localization of Thunderbird in Chinese (Taiwan).
+ This package contains the localization of puremail in Chinese (Taiwan).
 
 Package: icedove-l10n-all
 Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-all,
+ puremail-l10n-all,
  ${misc:Depends},
 Description: All language packages for Icedove (meta) - Transitional package
- Thunderbird is an mail client suitable for free distribution. The goal of
- Thunderbird is to produce a cross platform stand-alone mail application using
+ puremail is an mail client suitable for free distribution. The goal of
+ puremail is to produce a cross platform stand-alone mail application using
  the XUL user interface language.
  .
  This package is a metapackage depending on all available localization of
- Thunderbird.
+ puremail.
  .
  This is a transitional package. It can be safely removed.
 
@@ -1642,12 +1641,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-ar,
+ puremail-l10n-ar,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ar
 Description: Arabic language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Arabic.
@@ -1659,12 +1658,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-ast,
+ puremail-l10n-ast,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ast
 Description: Asturian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Asturian.
@@ -1676,12 +1675,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-be,
+ puremail-l10n-be,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:be
 Description: Belarusian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Belarusian.
@@ -1693,12 +1692,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-bg,
+ puremail-l10n-bg,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:bg
 Description: Bulgarian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Bulgarian.
@@ -1710,12 +1709,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-bn-bd,
+ puremail-l10n-bn-bd,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:bd-BD
 Description: Bengali language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Bengali.
@@ -1727,12 +1726,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-br,
+ puremail-l10n-br,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:br
 Description: Breton language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Breton.
@@ -1744,12 +1743,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-ca,
+ puremail-l10n-ca,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ca
 Description: Catalan/Valencian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Catalan/Valencian.
@@ -1761,12 +1760,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-cs,
+ puremail-l10n-cs,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:cs
 Description: Czech language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Czech.
@@ -1778,12 +1777,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-da,
+ puremail-l10n-da,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:da
 Description: Danish language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Danish.
@@ -1795,12 +1794,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-de,
+ puremail-l10n-de,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:de
 Description: German language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in German.
@@ -1812,12 +1811,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-el,
+ puremail-l10n-el,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:el
 Description: Greek language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Greek.
@@ -1829,12 +1828,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-en-gb,
+ puremail-l10n-en-gb,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:en-GB
 Description: English (Great Britain) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in English (Great Britain).
@@ -1846,12 +1845,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-es-ar,
+ puremail-l10n-es-ar,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:es-AR
 Description: Spanish (Argentina) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Spanish (Argentina).
@@ -1863,12 +1862,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-es-es,
+ puremail-l10n-es-es,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:es-ES
 Description: Spanish (Spain) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Spanish (Spain).
@@ -1880,12 +1879,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-et,
+ puremail-l10n-et,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:et
 Description: Estonian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Estonian.
@@ -1897,12 +1896,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-eu,
+ puremail-l10n-eu,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:eu
 Description: Basque language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Basque.
@@ -1914,12 +1913,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-fi,
+ puremail-l10n-fi,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:fi
 Description: Finnish language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Finnish.
@@ -1931,12 +1930,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-fr,
+ puremail-l10n-fr,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:fr
 Description: French language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in French.
@@ -1948,12 +1947,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-fy-nl,
+ puremail-l10n-fy-nl,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:fy-NL
 Description: Frisian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Frisian.
@@ -1965,12 +1964,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-ga-ie,
+ puremail-l10n-ga-ie,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ga-IE
 Description: Irish (Ireland) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Irish (Ireland).
@@ -1982,12 +1981,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-gd,
+ puremail-l10n-gd,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:gd
 Description: Gaelic (Scottish) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Gaelic (Scottish).
@@ -1999,12 +1998,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-gl,
+ puremail-l10n-gl,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:gl
 Description: Galician language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Galician.
@@ -2016,12 +2015,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-he,
+ puremail-l10n-he,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:he
 Description: Hebrew language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Hebrew.
@@ -2033,12 +2032,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-hr,
+ puremail-l10n-hr,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:hr
 Description: Croatian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Croatian.
@@ -2050,12 +2049,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-hu,
+ puremail-l10n-hu,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:hu
 Description: Hungarian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Hungarian.
@@ -2067,12 +2066,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-hy-am,
+ puremail-l10n-hy-am,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:hy-AM
 Description: Armenian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Armenian.
@@ -2084,12 +2083,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-id,
+ puremail-l10n-id,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:id
 Description: Indonesian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Indonesian.
@@ -2101,12 +2100,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-is,
+ puremail-l10n-is,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:is
 Description: Icelandic language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Icelandic.
@@ -2118,12 +2117,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-it,
+ puremail-l10n-it,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:it
 Description: Italian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Italian.
@@ -2135,12 +2134,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-ja,
+ puremail-l10n-ja,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ja
 Description: Japanese language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Japanese.
@@ -2152,12 +2151,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-ko,
+ puremail-l10n-ko,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ko
 Description: Korean language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Korean.
@@ -2169,12 +2168,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-lt,
+ puremail-l10n-lt,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:lt
 Description: Lithuanian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Lithuanian.
@@ -2186,12 +2185,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-nb-no,
+ puremail-l10n-nb-no,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:nb-NO
 Description: Bokmaal (Norway) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Bokmaal (Norway).
@@ -2203,12 +2202,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-nl,
+ puremail-l10n-nl,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:nl
 Description: Dutch language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Dutch.
@@ -2220,12 +2219,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-nn-no,
+ puremail-l10n-nn-no,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:nn-NO
 Description: Nynorsk (Norway) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Nynorsk (Norway).
@@ -2237,12 +2236,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-pa-in,
+ puremail-l10n-pa-in,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:pa
 Description: Punjabi (India) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Punjabi (India).
@@ -2254,12 +2253,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-pl,
+ puremail-l10n-pl,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:pl
 Description: Polish language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Polish.
@@ -2271,12 +2270,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-pt-br,
+ puremail-l10n-pt-br,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:pt-BR
 Description: Portuguese (Brazil) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Portuguese (Brazil).
@@ -2288,12 +2287,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-pt-pt,
+ puremail-l10n-pt-pt,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:pt-PT
 Description: Portuguese (Portugal) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Portuguese (Portugal).
@@ -2305,12 +2304,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-rm,
+ puremail-l10n-rm,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:rm
 Description: Romansh language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Romansh.
@@ -2322,12 +2321,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-ro,
+ puremail-l10n-ro,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ro
 Description: Romania language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Romania.
@@ -2339,12 +2338,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-ru,
+ puremail-l10n-ru,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ru
 Description: Russian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Russian.
@@ -2356,12 +2355,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-si,
+ puremail-l10n-si,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:si
 Description: Sinhala language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Sinhala.
@@ -2373,12 +2372,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-sk,
+ puremail-l10n-sk,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:sk
 Description: Slovak language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Slovak.
@@ -2390,12 +2389,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-sl,
+ puremail-l10n-sl,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:sl
 Description: Slovenian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Slovenian.
@@ -2407,12 +2406,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-sq,
+ puremail-l10n-sq,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:sq
 Description: Albanian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Albanian.
@@ -2424,12 +2423,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-sr,
+ puremail-l10n-sr,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:sr
 Description: Serbian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Serbian.
@@ -2441,12 +2440,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-sv-se,
+ puremail-l10n-sv-se,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:sv-SE
 Description: Swedish (Sweden) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Swedish (Sweden).
@@ -2458,12 +2457,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-ta-lk,
+ puremail-l10n-ta-lk,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:ta-LK
 Description: Tamil language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Tamil.
@@ -2475,12 +2474,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-tr,
+ puremail-l10n-tr,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:tr
 Description: Turkish language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Turkish.
@@ -2492,12 +2491,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-uk,
+ puremail-l10n-uk,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:uk
 Description: Ukrainian language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Ukrainian.
@@ -2509,12 +2508,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-vi,
+ puremail-l10n-vi,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:vi
 Description: Vietnamese language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Vietnamese.
@@ -2526,12 +2525,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-zh-cn,
+ puremail-l10n-zh-cn,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:zh-CN
 Description: Chinese (China) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Chinese (China).
@@ -2543,12 +2542,12 @@ Architecture: all
 Section: oldlibs
 Priority: extra
 Depends:
- thunderbird-l10n-zh-tw,
+ puremail-l10n-zh-tw,
  ${misc:Depends},
 Homepage: https://wiki.mozilla.org/L10n:Teams:zh-TW
 Description: Chinese (Taiwan) language package for Icedove - Transitional package
- Icedove is an unbranded Thunderbird mail client suitable for free distribution.
- The goal of Thunderbird is to produce a cross platform stand-alone mail
+ Icedove is an unbranded puremail mail client suitable for free distribution.
+ The goal of puremail is to produce a cross platform stand-alone mail
  application using the XUL user interface language.
  .
  This package contains the localization of Icedove in Chinese (Taiwan).
