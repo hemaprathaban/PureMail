@@ -1,0 +1,32 @@
+#!/usr/bin/dh-exec
+debian/logo/puremail/mailicon16.png         => usr/share/icons/hicolor/16x16/apps/puremail.png
+debian/logo/puremail/mailicon22.png         => usr/share/icons/hicolor/22x22/apps/puremail.png
+debian/logo/puremail/mailicon24.png         => usr/share/icons/hicolor/24x24/apps/puremail.png
+debian/logo/puremail/mailicon32.png         => usr/share/icons/hicolor/32x32/apps/puremail.png
+debian/logo/puremail/mailicon48.png         => usr/share/icons/hicolor/48x48/apps/puremail.png
+debian/logo/puremail/mailicon64.png         => usr/share/icons/hicolor/64x64/apps/puremail.png
+debian/logo/puremail/mailicon128.png        => usr/share/icons/hicolor/128x128/apps/puremail.png
+debian/logo/puremail/mailicon256.png        => usr/share/icons/hicolor/256x256/apps/puremail.png
+debian/puremail-wrapper.sh                  => usr/bin/puremail
+
+debian/account-autoconfig/*                       usr/share/puremail/isp
+debian/logo/puremail/puremail.svg           usr/share/icons/hicolor/scalable/apps
+debian/puremail.desktop                        usr/share/applications
+debian/puremail.js                             etc/puremail/pref
+debian/puremail-wrapper-helper.sh              usr/lib/puremail
+debian/tmp/usr/lib/puremail/*.ini
+debian/tmp/usr/lib/puremail/blocklist.xml
+debian/tmp/usr/lib/puremail/chrome             usr/share/puremail
+debian/tmp/usr/lib/puremail/defaults/messenger usr/share/puremail/defaults
+debian/tmp/usr/lib/puremail/defaults/pref      usr/share/puremail/defaults
+debian/tmp/usr/lib/puremail/dependentlibs.list
+debian/tmp/usr/lib/puremail/puremail*
+debian/tmp/usr/lib/puremail/isp                usr/share/puremail
+debian/tmp/usr/lib/puremail/lib*
+debian/tmp/usr/lib/puremail/omni.ja            usr/share/puremail
+debian/tmp/usr/lib/puremail/plugin-container
+debian/tmp/usr/lib/puremail/removed-files
+debian/tmp/usr/lib/puremail/run-mozilla.sh
+[amd64 armel armhf i386] debian/tmp/usr/lib/puremail/Throbber-small.gif
+[amd64 armel armhf i386] debian/tmp/usr/lib/puremail/crashreporter
+debian/vendor.js                                  usr/share/puremail/defaults/pref

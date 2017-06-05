@@ -1,0 +1,7 @@
+# The embedded libjpeg is libjpeg-turbo, not libjpeg.
+puremail: embedded-library usr/lib/puremail/libxul.so: libjpeg
+# Upstream code is not ready to use system library
+puremail: embedded-library usr/lib/puremail/libxul.so: srtp
+#puremail: embedded-library usr/lib/puremail/libxul.so: libtheora
+# The embedded libpng is patched for APNG support
+puremail: embedded-library usr/lib/puremail/libxul.so: libpng

@@ -1,0 +1,5 @@
+usr/lib/puremail/libldap60.so     usr/lib/puremail-devel/sdk/lib/libldap60.so
+usr/lib/puremail/libldif60.so     usr/lib/puremail-devel/sdk/lib/libldif60.so
+usr/lib/puremail/libprldap60.so   usr/lib/puremail-devel/sdk/lib/libprldap60.so
+usr/lib/puremail/libxul.so        usr/lib/puremail-devel/sdk/lib/libxul.so
+usr/include/puremail/mozilla/MediaStreamAudioDestinationNode.h usr/include/puremail/mozilla/dom/MediaStreamAudioDestinationNode.h

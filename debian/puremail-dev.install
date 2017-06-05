@@ -1,0 +1,6 @@
+debian/puremail.pc                                 usr/lib/pkgconfig/
+debian/tmp/usr/include/puremail/*                  usr/include/puremail/
+debian/tmp/usr/lib/puremail-devel                  usr/lib/
+debian/tmp/usr/share/idl/puremail/*                usr/share/idl/puremail/
+mozilla/config/MozZipFile.py                          usr/lib/puremail-devel/config/
+mozilla/python/mozbuild/mozbuild/action/buildlist.py  usr/lib/puremail-devel/config/

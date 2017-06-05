@@ -1,0 +1,10 @@
+/etc/puremail/pref            usr/share/puremail/defaults/syspref
+/usr/share/hunspell              usr/lib/puremail/dictionaries
+# don't link /usr/bin/puremail -> /usr/lib/puremail/puremail
+# we need to use a wrapper for Icedove user profile migration
+#usr/lib/puremail/puremail  usr/bin/puremail
+usr/share/puremail/chrome     usr/lib/puremail/chrome
+usr/share/puremail/chrome/icons/default/default48.png  usr/share/pixmaps/puremail.png
+usr/share/puremail/defaults   usr/lib/puremail/defaults
+usr/share/puremail/isp        usr/lib/puremail/isp
+usr/share/puremail/omni.ja    usr/lib/puremail/omni.ja
