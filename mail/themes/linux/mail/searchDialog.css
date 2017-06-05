@@ -1,0 +1,205 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== searchDialog.css ===============================================
+  == Styles for the Mail Search dialog.
+  ======================================================================= */
+
+@import url("chrome://messenger/skin/");
+@import url("chrome://messenger/skin/tagColors.css");
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* ::::: box sizes ::::: */
+
+#searchTermTree {
+  min-height: 50px;
+}
+
+#searchTermListBox {
+  height: 100px;
+}
+
+#searchResultListBox {
+  margin: 5px;
+  height: 100px;
+}
+
+.search-menulist[unavailable="true"] {
+  color: GrayText;
+}
+
+menulist {
+  width: 12em;
+}
+
+menulist > menupopup > menuitem {
+  -moz-padding-end: 2px;
+}
+
+textbox {
+  margin: 1px 4px;
+}
+
+.small-button {
+  min-width: 3em;
+  padding: 0px;
+  margin: 0px 1px;
+}
+
+.filler {
+  -moz-padding-end: 22px;
+}
+
+/* ::::: thread decoration ::::: */
+
+treechildren::-moz-tree-cell-text(read) {
+  font-weight: normal;
+}
+
+treechildren::-moz-tree-cell-text(unread) {
+  font-weight: bold;
+}
+
+/* on a collapsed thread, if the top level message is read, but the thread has
+ * unread children, underline the text.  4.x mac did this, very slick
+ */
+treechildren::-moz-tree-cell-text(container, closed, hasUnread, read) {
+  text-decoration: underline;
+}
+
+/* ::::: message column icons ::::: */
+
+/* ..... column picker ..... */
+
+.tree-columnpicker-icon  {
+  list-style-image: url("chrome://messenger/skin/icons/columnpicker.svg");
+}
+
+/* ..... thread column ..... */
+
+.threadColumnHeader {
+  list-style-image: url("chrome://messenger/skin/icons/thread-col.svg");
+}
+
+treechildren::-moz-tree-image(threadCol, container) {
+  list-style-image: url("chrome://messenger/skin/icons/thread.png");
+}
+
+/* ..... read column ..... */
+
+.readColumnHeader {
+  list-style-image: url("chrome://messenger/skin/icons/readcol.svg");
+  -moz-padding-end: 3px;
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader) {
+  list-style-image: url("chrome://messenger/skin/icons/message-list.png");
+  -moz-image-region: rect(0px 16px 16px 0px); /* message-read.png */
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader, unread) {
+  -moz-image-region: rect(16px 16px 32px 0px); /* message-unread.png */
+}
+
+/* ..... attachment column ..... */
+
+.attachmentColumnHeader {
+  list-style-image: url("chrome://messenger/skin/icons/attachment-col.svg");
+  -moz-padding-end: 3px;
+}
+
+treechildren::-moz-tree-image(attachmentCol, attach) {
+  list-style-image: url("chrome://messenger/skin/icons/message-list.png");
+  -moz-image-region: rect(160px 16px 176px 0px); /* message-attachment.png */
+}
+
+/* ..... flag column ..... */
+
+.flagColumnHeader {
+  list-style-image: url("chrome://messenger/skin/icons/flag-col.svg");
+  -moz-padding-end: 3px;
+}
+
+treechildren::-moz-tree-image(flaggedCol) {
+  list-style-image: url("chrome://messenger/skin/icons/message-list.png");
+  -moz-image-region: rect(96px 16px 112px 0px); /* message-unstarred.png */
+  -moz-padding-end: 2px;
+}
+
+treechildren::-moz-tree-image(flaggedCol, flagged) {
+  -moz-image-region: rect(80px 16px 96px 0px); /* message-starred.png */
+  -moz-padding-end: 2px;
+}
+
+
+/* ..... junkStatus column ..... */
+
+.junkStatusHeader {
+  list-style-image: url("chrome://messenger/skin/icons/junk-col.svg");
+  -moz-padding-end: 3px;
+}
+
+/* "unknown" now looks like "not junk".  see bug #182386 */
+treechildren::-moz-tree-image(junkStatusCol) {
+  list-style-image: url("chrome://messenger/skin/icons/message-list.png");
+  -moz-image-region: rect(0px 16px 16px 0px); /* message-read.png */
+  -moz-padding-start: 0px;
+}
+
+treechildren::-moz-tree-image(junkStatusCol, junk) {
+  -moz-image-region: rect(32px 16px 48px 0px); /* message-junk.png */
+}
+
+treechildren::-moz-tree-image(junkStatusCol, notjunk) {
+  -moz-image-region: rect(0px 16px 16px 0px); /* message-read.png */
+  -moz-padding-start: 0px;
+}
+
+/* ..... subject column ..... */
+
+#subjectCol {
+  -moz-padding-start: 16px;
+}
+
+#subjectCol[primary="true"] {
+  -moz-padding-start: 26px;
+}
+
+treechildren::-moz-tree-image(subjectCol) {
+  -moz-margin-end: 2px;
+  list-style-image: url("chrome://messenger/skin/icons/message-list.png");
+  -moz-image-region: rect(48px 16px 64px 0px); /* message-blank.png */
+}
+
+treechildren::-moz-tree-image(subjectCol, forwarded) {
+  -moz-image-region: rect(128px 16px 144px 0px); /* message-forwarded.png */
+}
+
+treechildren::-moz-tree-image(subjectCol, replied) {
+  -moz-image-region: rect(112px 16px 128px 0px); /* message-replied.png */
+}
+
+treechildren::-moz-tree-image(subjectCol, replied, forwarded) {
+  -moz-image-region: rect(144px 16px 160px 0px); /* message-replied-forwarded.png */
+}
+
+treechildren::-moz-tree-image(subjectCol, new) {
+  -moz-image-region: rect(64px 16px 80px 0px); /* message-new.png */
+}
+
+treechildren::-moz-tree-image(subjectCol, imapdeleted) {
+  list-style-image: url("chrome://messenger/skin/icons/message.png");
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+treechildren::-moz-tree-cell-text(subjectCol) {
+  -moz-padding-start: 0;
+}
+
+#sizeCol,
+#unreadCol,
+#totalCol {
+  text-align: right;
+}

@@ -1,0 +1,324 @@
+﻿De-Branding of Icedove, Reintroduce Thunderbird in Debian
+---------------------------------------------------------
+
+Debian and Mozilla has done some new rethinking and talking about the old legal
+questions about trademark issues [1].
+Based on this revaluation the Debian project got now an agreement from Mozilla
+Corp. that the rebranded packages Iceweasel, Debian rebranded version for
+Firefox, and Icedove, Debian rebranded version for Thunderbird are no longer
+needed.
+
+The maintainers of the Iceweasel package followed that agreement and did a
+de-branding of Iceweasel back to Firefox. More information on this process can
+be found on [1].
+For Icedove the maintainers followed too the new agreement and remove the old
+branding after almost 10 years for Icedove and Iceowl-Extension and switched
+back to the official branding from Mozilla. The according bug for this process
+can be found under [2].
+
+For versions greater 1:45.6.0-2 the following packages were introduced as a
+replacement.
+
+old package .... --> new package         usage
+---------------------------------------------------------------------------------
+icedove ........ --> thunderbird        (Thunderbird Main application)
+icedove-dev .... --> thunderbird-dev    (Thunderbird Development files)
+icedove-dbg .... --> thunderbird-dbg    (Thunderbird with debugging symbols)
+iceowl-extension --> lightning          (Lightning, aka Calendar for Thunderbird)
+icedove-l10n-* . --> thunderbird-l10n-* (l10n localization for Thunderbird)
+iceowl-l10n-* .. --> lightning-l10n-*   (l10n localization for Lightning)
+
+The old packages were changed to transitional packages and can be safely
+removed after the automatically installation of the new packages.
+
+= Profile Migration =
+=====================
+
+Due the removing of the rebranding for Icedove Thunderbird will use the default
+profile folder $HOME/.thunderbird for storing all the various user related
+stuff!
+With the new Thunderbird packages there is a wrapper script included, placed as
+/usr/bin/thunderbird that will do a adoption of the existing profile folder
+$HOME/.icedove into the new default folder for the user profile
+$HOME/.thunderbird by setting up a symlink to the existing profile if possible.
+
+The automatism in the script will check the following parts:
+
+  1. Check if there is a folder or a symbolic link $HOME/.icedove existing and
+     there is NO folder or symbolic link $HOME/.thunderbird.
+
+  2. Create a symlink from $HOME/.thunderbird to $HOME/.icedove .
+
+  3. Fixing Mime type registration for' http(s)' and 'file' inside mimeTypes.rdf
+     if they registered for iceweasel. Before starting the fixup a backup will
+     be created name $FILE.backup_thunderbird_migration-${DATE}.
+
+  4. Also check for desktop type registrations of 'userapp-icedove*.desktop' in
+     '$HOME/.config/mimeapps.list' and $HOME/.local/share/applications/mimeapps.list,
+     but only if this file exists, users of tiling window managers won't have
+     this file. Read further for more information on this.
+     Like above, a backup of the existing file with same schema will be created
+     if needed.
+
+  7. If all was going well, starting Thunderbird.
+
+  8. If there is no folder $HOME/.icedove or $HOME/.thunderbird exists the
+     wrapper script will start Thunderbird without any extra action.
+
+  9. The above steps from 3.) will be also done if you already have a symlink
+     $HOME/.thunderbird that is pointing to $HOME/.icedove or the opposite,
+     $HOME/.thunderbird is pointing to $HOME/.icedove.
+
+     So if you don't have one of the following four cases the wrapper script
+     will exit with a error message.
+
+     1. $HOME/.icedove is existing and holds valid profile data
+     2. $HOME/.thunderbird points to $HOME/.icedove and 1. is true
+     3. $HOME/.icedove points to $HOME/.thunderbird and 1. is true
+     4. $HOME/.thunderbird is existing and holds valid profile data
+        (Note: Not the script, but Thunderbird will error out here if no
+         profiles are found!)
+
+If there is anything going wrong there will be splash screens displayed with
+some additional notes, the logger mechanism will write some information about
+what's going wrong into /var/log/syslog.
+
+So don't panic if there is something not working automatically. If the starter
+script can't do the adoptions you will need to look by yourself and solve the
+situation. Mostly there can be already a folder or symlink $HOME/.thunderbird
+that prevents a automatic migration by the script. In such a case save a
+existing folder $HOME/.thunderbird else where if needed and restart the
+Thunderbird application. Other things like extra special mountpoints by the
+system administrator can't also be handled by the script. Please ask the
+service desk if you have trouble then.
+
+What else can you do?
+You can call '/usr/bin/thunderbird --verbose' from a command line to see a
+verbose output of the wrapper script. For more options of the wrapper script
+and how to use them call '/usr/bin/thunderbird --help'.
+
+The Debian wiki is holding also extra information about the migration of
+Icedove to Thunderbird.
+
+  https://wiki.debian.org/Thunderbird
+
+For backward compatibility whithin the Stretch release there will be that
+migration functionality until the release of Buster (aka Debian 10).
+Afterwards you can still do this on your on by moving the folders manually.
+
+= User specific MIME Associations =
+===================================
+
+The desktop environment (usually Gnome, KDE, Mate etc.) is holding the
+specific associations between MIME types and applications in various
+places.  In order the user can override system settings and adding new
+ones the according place in the users home is the file
+'$(HOME)/.config/mimeapps.list'.
+
+The migration is taking care for old 'icedove.desktop' associations and
+is rewriting them to 'thunderbird.desktop'.
+Like already done for the user profile, there will be always a backup
+of the existing file created before the replacement can be done. In case
+of problems you can safely move back to the original file. You will lost
+then the needed association for the thunderbird binary.
+
+You can call '/usr/bin/thunderbird --show-backup' to see created backups from
+the various possible modified files while the profile adoption.
+
+See also:
+
+ https://specifications.freedesktop.org/mime-apps-spec/mime-apps-spec-1.0.html
+
+= Migration of global configurations =
+======================================
+
+If you have some own special preferences files placed in '/etc/icedove/pref/'
+they will be moved to '/etc/thunderbird/pref/'.
+In case you have a modified file '/etc/icedove/pref/icedove.js' it will be
+moved to '/etc/thunderbird/pref/icedove.js.dpkg-backup' to keep your changes.
+Please adjust this file to the Thunderbird specific configuration file
+'/etc/thunderbird/pref/thunderbird.js'. The old folder '/etc/icedove' is gone
+be removed only if it is completely empty.
+
+There are still some corner cases where this automatism with configuration
+files in /etc/thunderbird/pref is not fully working. Please note #806955 [4]
+about such issues.
+
+[1] https://en.wikipedia.org/wiki/Mozilla_software_rebranded_by_Debian
+[2] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=815006
+[3] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=816679
+[4] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=806955
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Sun, 21 Aug 2016 10:12:00 +0200
+
+Mozilla Crash Reporter for Thunderbird
+--------------------------------------
+
+The crash reporter tor Thunderbird is enabled since version > 1:45.6.0-3. By
+this a possible crash could be automatically send to Mozilla if the user is
+accepting this. There is nothing send to Mozilla without a user action. More
+information about the crash reporter can be found on:
+
+https://support.mozilla.org/en-US/kb/mozilla-crash-reporter-tb
+
+Please consider to use the crash reporter for getting crashes reported
+upstream, this also helps the maintainers if Thunderbird to get crash reports
+send upstream.
+Submitted crash reports can be found, if any was send, in
+
+  ~/.thunderbird/Crash Reports/submitted/
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Sun, 29 Jan 2017 14:15:00 +0100
+
+Icedove for Debian
+------------------
+
+Icedove is the Thunderbird email client from Mozilla rebranded by Debian.
+
+Mozilla has changed the kind of developing and managing Thunderbird and make an
+announcement about this on July 8 2012. Since this announcement Mozilla decided
+to change the focus of there own software development and will put more action
+on important web projects and of course on FirefoxOS. Mozilla plans to open the
+Thunderbird development to a more community driven project but will also be
+there for security and stability maintenance. There are no plans to close the
+packaging of Icedove from the Debian side, but the future will see where the
+upstream project will go to.
+As long as Mozilla will provide ESR versions there will be packaged versions of
+those inside the various release of Debian.
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Sun, 2 July 2013 21:32:07 +0100
+
+Downgrading TLS security
+------------------------
+
+If your provider doesn't support TLS 1.2 and you can't make him
+upgrade you can change:
+
+    "security.tls.version.min"
+
+and/or
+
+    "security.tls.version.max"
+
+in about:config (available via "Edit ->> + Preferences -> Advanced ->
+General -> Config Editor"). For details see
+http://kb.mozillazine.org/Security.tls.version.* .
+
+Note that changing these values decreases your transport level
+security. For more details see:
+
+https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
+https://bugzilla.mozilla.org/show_bug.cgi?id=480514
+https://wiki.mozilla.org/Security/Server_Side_TLS
+http://en.wikipedia.org/wiki/Network_Security_Services
+http://kb.mozillazine.org/Connection_errors_-_SMTP
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=761245
+https://tools.ietf.org/html/draft-ietf-tls-downgrade-scsv-00
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Wed, 15 Oct 2014 18:38:00 +0200
+
+Adjusting TLS fallback strategy
+-------------------------------
+
+Mozilla introduced a new setting with version 34.0b1:
+
+    "security.tls.version.fallback-limit"
+
+The recommended (and default) value currently is: 1
+
+This means Icedove is doing a fall back from TLS 1.2 through 1.1 to 1.0 if
+the server is requesting this.
+A value of '2' would mean Icedove is only using TLS 1.2 and 1.1.
+And with a value of '3' Icedove wouldn't do any fall back and is only using
+TLS 1.2.
+
+Technical details can be found on:
+https://bugzilla.mozilla.org/show_bug.cgi?id=1093724
+https://bugzilla.mozilla.org/show_bug.cgi?id=1084025
+
+Reactivateing SSLV3 connectivity
+--------------------------------
+
+Due to POODLE and BEAST SSLv3 encrypted connections are not considered secure
+anymore. See [1], [2] and [3] for details. If you need to reactivate SSLv3 to
+use Icedove against legacy systems you have to change the settings for
+
+    "security.tls.version.min"
+
+and set the value to '0'.
+
+This setting can be found in the about:config summary.
+(available via "Edit ->> + Preferences -> Advanced -> General -> Config Editor").
+For details see
+http://kb.mozillazine.org/Security.tls.version.* as written above.
+
+Please read also:
+[1] http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3389
+[2] https://www.openssl.org/~bodo/ssl-poodle.pdf
+[3] https://blog.mozilla.org/security/2014/10/14/the-poodle-attack-and-the-end-of-ssl-3-0/
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Wed, 12 Nov 2014 19:38:00 +0100
+
+Plugins and Icedove settings
+----------------------------
+
+There are at least one known plugin that conflict with the change of the
+security settings from above.
+The user Brent S. Elmer has reported that the plugin 'HTTPS Everywhere' from
+the Electronic Frontier Foundation is blocking a permanent change of the
+setting "security.tls.version.min". Note that this behavior is no Debian
+related issue.
+
+Please report other plugins and extensions that doesn't work well with the
+security settings.
+
+[1] https://www.eff.org/https-everywhere
+[2] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=774790
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Sun, 18 Jan 2015 9:34:00 +0100
+
+New and Changed Features with Icedove version 38.x and above
+------------------------------------------------------------
+
+At the Thunderbird Summit 2014 in Toronto [1] the contributors and developers
+for Thunderbird decided to focus their work on some important changes that now
+released with version 38.0.1.
+For Icedove these changes means in detail:
+ * New storage backend maildir
+   You can now choose as backend while set up a new account to store the
+   emails in a maildir [2] backend. There is no migration from existing
+   accounts into the maildir backend format available! You have to set up a
+   new account for that and move your mails!
+
+ * Removing the 4GB folder maximum
+   In previous versions you couldn't use more than 4GB within one folder in
+   your INBOX, now this limit isn't exist any longer.
+
+ * Searching contacts across all address books
+   The address book now contains a folder "All Address Books" from there you
+   can search for any address in all of your local or remote address books.
+
+ * Support OAuth backend for new created GMail accounts
+   You are now able to use the OAuth authentication while you create a new
+   account for a GMail address. Existing accounts can be changed to use
+   OAuth.
+
+ * Opt out automatic installation of Lightning
+   Mozilla has changed the installation mechanism for Lightning away from a
+   always manually installation to a automatic installation with a option to
+   opt out this while the main installation of Thunderbird.
+   Debian is handling this slightly different as we use a package management
+   for such automatism.
+   On a Debian system the package iceowl-extensiom (the rebranded Lightning
+   package from Mozilla) will now installed automatically if you install or
+   upgrade the Icedove package through the package manager you prefer.
+   If you already have installed the Lightning package Icedove will use this
+   AddOn like before the upgrade.
+   But we recommend to not use the Lightning AddOn to work always with full
+   compatible program packages. So please remove the Lightning plugin and use
+   the iceowl-extension instead. No data will be lost!
+
+[1] https://wiki.mozilla.org/Thunderbird:Summit_2014
+[2] https://en.wikipedia.org/wiki/Maildir
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Sun, 14 Jun 2015 13:13:00 +0200

@@ -1,0 +1,24 @@
+From: Mike Hommey <glandium@debian.org>
+Date: Sat, 22 Nov 2008 09:35:23 +0100
+Subject: Properly launch applications set in $HOME/.mailcap
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=444440
+---
+ mozilla/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/mozilla/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp b/mozilla/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
+index caac2ff..54b17c9 100644
+--- a/mozilla/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
++++ b/mozilla/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
+@@ -89,6 +89,10 @@ nsMIMEInfoUnix::LaunchDefaultWithFile(nsIFile *aFile)
+     return nsMIMEInfoImpl::LaunchDefaultWithFile(aFile);
+ 
+   nsAutoCString nativePath;
++/* the name of the function has changed
++ * the old was the following:
++  nsCAutoString nativePath;
++  */
+   aFile->GetNativePath(nativePath);
+ 
+ #if defined(MOZ_ENABLE_CONTENTACTION)

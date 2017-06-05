@@ -1,0 +1,25 @@
+From: Mike Hommey <glandium@debian.org>
+Date: Sun, 2 Nov 2008 17:56:24 +0100
+Subject: Disable optimization on alpha for the url-classifier component
+
+The use of this component leads to crashes when built with optimizations.
+---
+ mozilla/toolkit/components/feeds/Makefile.in | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/mozilla/toolkit/components/feeds/Makefile.in b/mozilla/toolkit/components/feeds/Makefile.in
+index 4567907..43ef729 100644
+--- a/mozilla/toolkit/components/feeds/Makefile.in
++++ b/mozilla/toolkit/components/feeds/Makefile.in
+@@ -6,3 +6,11 @@
+ include $(topsrcdir)/config/rules.mk
+ 
+ ABS_SRCDIR := $(abspath $(srcdir))
++
++CXXFLAGS += \
++  $(SQLITE_CFLAGS) \
++  $(NULL)
++
++ifeq ($(OS_TEST),alpha)
++MOZ_OPTIMIZE_FLAGS := -O0
++endif
