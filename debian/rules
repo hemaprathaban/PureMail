@@ -5,19 +5,19 @@
 # export DH_VERBOSE=1
 
 # checking the release type, if $(RELEASE)=UNRELEASED we won't build
-# the thunderbird-dbg package
+# the puremail-dbg package
 RELEASE := $(shell head -1 debian/changelog | cut -d" " -f3 | tr -d ';')
 
-THUNDERBIRD_VERSION=$(shell tail -1 mail/config/version.txt)
+puremail_VERSION=$(shell tail -1 mail/config/version.txt)
 DEB_AUTO_UPDATE_AUTOCONF=2.13
 
-# build directory used for building the thunderbird-l10n files
-THUNDERBIRD_L10N_BUILDDIR=debian/thunderbird-l10n-build
+# build directory used for building the puremail-l10n files
+puremail_L10N_BUILDDIR=debian/puremail-l10n-build
 
 # build directory used for building the lightning-l10n files
 LIGHTNING_L10N_BUILDDIR=debian/lightning-l10n-build
 # Iceowl/Lightning version, note this is different from the TB version!
-LIGHTNING_VERSION := $(shell python $(CURDIR)/calendar/lightning/build/makeversion.py ${THUNDERBIRD_VERSION})
+LIGHTNING_VERSION := $(shell python $(CURDIR)/calendar/lightning/build/makeversion.py ${puremail_VERSION})
 
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/buildflags.mk
@@ -50,7 +50,7 @@ ifeq ($(RELEASE),jessie-security)
 	export MOZ_APP_PROFILE := .icedove
 endif
 export MOZ_BUILD_DATE := $(shell TZ=UTC date -d "$(shell dpkg-parsechangelog -S Date)" +%Y%m%d%H%M%S)
-export MOZCONFIG=$(shell pwd)/mozconfig.thunderbird
+export MOZCONFIG=$(shell pwd)/mozconfig.puremail
 export MOZILLA_OFFICIAL=1
 export DEB_BUILD_GNU_TYPE
 export DEB_HOST_GNU_TYPE
@@ -65,9 +65,9 @@ build:
 	dh $@
 
 override_dh_auto_clean:
-	dh_auto_clean --builddirectory=obj-thunderbird
-	# needed for thunderbird-l10n
-	rm -rf $(THUNDERBIRD_L10N_BUILDDIR)
+	dh_auto_clean --builddirectory=obj-puremail
+	# needed for puremail-l10n
+	rm -rf $(puremail_L10N_BUILDDIR)
 	# needed for lightning-l10n
 	rm -rf $(LIGHTNING_L10N_BUILDDIR)
 
@@ -84,20 +84,20 @@ override_dh_auto_configure:
 	# copy the mozconfig files
 	cp debian/mozconfig.* .
 	cp debian/mozconfig.default mozilla/
-	echo 'mk_add_options MOZ_OBJDIR=$(CURDIR)/obj-thunderbird' >> mozconfig.thunderbird
+	echo 'mk_add_options MOZ_OBJDIR=$(CURDIR)/obj-puremail' >> mozconfig.puremail
 	# configure the various build settings
-	# thunderbird, thunderbird-dev, calendar-google-provider, lightning
+	# puremail, puremail-dev, calendar-google-provider, lightning
 	make -f client.mk configure
 
 override_dh_auto_build:
 	# building the stuff
 	make -f client.mk build
-	# build thunderbird-l10n
-	mkdir -p $(THUNDERBIRD_L10N_BUILDDIR)
+	# build puremail-l10n
+	mkdir -p $(puremail_L10N_BUILDDIR)
 	cd $(CURDIR)/icedove-l10n; \
 	for XPI in *; do \
 		LOCALE=`basename $${XPI}`; \
-		xpi-pack $${LOCALE} ../$(THUNDERBIRD_L10N_BUILDDIR)/$${LOCALE}.xpi; \
+		xpi-pack $${LOCALE} ../$(puremail_L10N_BUILDDIR)/$${LOCALE}.xpi; \
 	done
 	# build lightning-l10n
 	mkdir -p $(LIGHTNING_L10N_BUILDDIR)
@@ -111,14 +111,14 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	make -f client.mk install DESTDIR=$(CURDIR)/debian/tmp
-	# install thunderbird-l10n
+	# install puremail-l10n
 	cd $(CURDIR)/icedove-l10n; \
 	for DIRECTORY in *; do \
 		LOCALE=`echo $${DIRECTORY} | tr [:upper:] [:lower:]`; \
 		ID=`cat $${DIRECTORY}/install.rdf | sed --posix '/em:id=/!d;s/[ ]*em:id="//;s/".*//'`; \
-		install -D -m 644 ../$(THUNDERBIRD_L10N_BUILDDIR)/$${DIRECTORY}.xpi $(CURDIR)/debian/thunderbird-l10n-$${LOCALE}/usr/share/thunderbird/extensions/$${ID}.xpi; \
-		mkdir -p $(CURDIR)/debian/thunderbird-l10n-$${LOCALE}/usr/lib/thunderbird/extensions; \
-		ln -sf /usr/share/thunderbird/extensions/$${ID}.xpi $(CURDIR)/debian/thunderbird-l10n-$${LOCALE}/usr/lib/thunderbird/extensions/$${ID}.xpi; \
+		install -D -m 644 ../$(puremail_L10N_BUILDDIR)/$${DIRECTORY}.xpi $(CURDIR)/debian/puremail-l10n-$${LOCALE}/usr/share/puremail/extensions/$${ID}.xpi; \
+		mkdir -p $(CURDIR)/debian/puremail-l10n-$${LOCALE}/usr/lib/puremail/extensions; \
+		ln -sf /usr/share/puremail/extensions/$${ID}.xpi $(CURDIR)/debian/puremail-l10n-$${LOCALE}/usr/lib/puremail/extensions/$${ID}.xpi; \
 	done
 	# install lightning-l10n
 	for jar in $(LIGHTNING_L10N_BUILDDIR)/*.jar; do \
@@ -131,9 +131,9 @@ override_dh_auto_install:
 		mkdir -p $(CURDIR)/debian/lightning-l10n-$${locale}/usr/lib/iceowl/extensions/; \
 		ln -sf /usr/share/iceowl/extensions/langpack-$${locale}@lightning.debian.org/ \
 			$(CURDIR)/debian/lightning-l10n-$${locale}/usr/lib/iceowl/extensions/langpack-$${locale}@lightning.debian.org; \
-		mkdir -p $(CURDIR)/debian/lightning-l10n-$${locale}/usr/lib/thunderbird/extensions/; \
+		mkdir -p $(CURDIR)/debian/lightning-l10n-$${locale}/usr/lib/puremail/extensions/; \
 		ln -sf /usr/share/iceowl/extensions/langpack-$${locale}@lightning.debian.org/ \
-			$(CURDIR)/debian/lightning-l10n-$${locale}/usr/lib/thunderbird/extensions/langpack-$${locale}@lightning.debian.org; \
+			$(CURDIR)/debian/lightning-l10n-$${locale}/usr/lib/puremail/extensions/langpack-$${locale}@lightning.debian.org; \
 	done
 	# install lightning-l10n; install.rdf
 	for jar in $(LIGHTNING_L10N_BUILDDIR)/*.jar; do \
@@ -160,8 +160,8 @@ override_dh_auto_install:
 
 override_dh_install-arch:
 	dh_install
-	# adjust Thunderbird version in pkg-config file
-	sed -i 's/@Version@/$(THUNDERBIRD_VERSION)/' debian/thunderbird-dev/usr/lib/pkgconfig/thunderbird.pc
+	# adjust puremail version in pkg-config file
+	sed -i 's/@Version@/$Puremail_VERSION)/' debian/puremail-dev/usr/lib/pkgconfig/puremail.pc
 	# prepare lightning
 	LIGHTNING=`find -type f -name "lightning*.xpi"` &&\
 		unzip -d debian/lightning/usr/lib/lightning/ $(CURDIR)/$$LIGHTNING
@@ -176,12 +176,12 @@ override_dh_install-arch:
 	@echo "    --> searching for temporary build files in 'lightning' ..."
 	@for i in `find debian/lightning/ -name ".mkdir.done*"`; do echo remove $$i && rm $$i; done
 	# remove duplicate .so files in dev package
-	rm debian/thunderbird-dev/usr/lib/thunderbird-devel/sdk/lib/libxul.so
+	rm debian/puremail-dev/usr/lib/puremail-devel/sdk/lib/libxul.so
 	# remove hardlink in dev package
-	rm debian/thunderbird-dev/usr/include/thunderbird/mozilla/dom/MediaStreamAudioDestinationNode.h
+	rm debian/puremail-dev/usr/include/puremail/mozilla/dom/MediaStreamAudioDestinationNode.h
 	# install apparmor profile
-	cp debian/apparmor/usr.bin.thunderbird debian/thunderbird/etc/apparmor.d/usr.bin.thunderbird
-	dh_apparmor --profile-name=usr.bin.thunderbird -pthunderbird
+	cp debian/apparmor/usr.bin.puremail debian/puremail/etc/apparmor.d/usr.bin.puremail
+	dh_apparmor --profile-name=usr.bin.puremail -ppuremail
 
 override_dh_install-indep:
 	dh_install
@@ -195,40 +195,40 @@ override_dh_install-indep:
 
 override_dh_fixperms-arch:
 	dh_fixperms
-	chmod a-x debian/thunderbird-dev/usr/share/idl/thunderbird/*.idl
-	chmod 0755 debian/thunderbird-dev/usr/lib/thunderbird-devel/sdk/bin/*.py
-	chmod 0644 debian/thunderbird-dev/usr/lib/thunderbird-devel/sdk/bin/xpidllex.py
-	chmod 0644 debian/thunderbird-dev/usr/lib/thunderbird-devel/sdk/bin/xpidlyacc.py
-	chmod 0755 debian/thunderbird-dev/usr/lib/thunderbird-devel/sdk/bin/xpcshell
+	chmod a-x debian/puremail-dev/usr/share/idl/puremail/*.idl
+	chmod 0755 debian/puremail-dev/usr/lib/puremail-devel/sdk/bin/*.py
+	chmod 0644 debian/puremail-dev/usr/lib/puremail-devel/sdk/bin/xpidllex.py
+	chmod 0644 debian/puremail-dev/usr/lib/puremail-devel/sdk/bin/xpidlyacc.py
+	chmod 0755 debian/puremail-dev/usr/lib/puremail-devel/sdk/bin/xpcshell
 
 override_dh_strip:
 	if [ "$(RELEASE)" != "UNRELEASED" ]; then \
-		dh_strip --dbg-package=thunderbird-dbg ;\
+		dh_strip --dbg-package=puremail-dbg ;\
 	else \
 		dh_strip --no-automatic-dbgsym ;\
 	fi
 
 override_dh_shlibdeps:
-	dh_shlibdeps -a -l $(CURDIR)/debian/tmp/usr/lib/thunderbird
+	dh_shlibdeps -a -l $(CURDIR)/debian/tmp/usr/lib/puremail
 
 override_dh_builddeb:
 	# just build all packages if there is no 'UNRELEASED' within the changelog
-	# found, otherwise skip the thunderbird-dbg package, it isn't there
+	# found, otherwise skip the puremail-dbg package, it isn't there
 	if [ "$(RELEASE)" != "UNRELEASED" ]; then \
 		dh_builddeb ;\
 	else \
-		dh_builddeb -pthunderbird ;\
+		dh_builddeb -ppuremail ;\
 		dh_builddeb -picedove ;\
-		dh_builddeb -pthunderbird-dev ;\
+		dh_builddeb -ppuremail-dev ;\
 		dh_builddeb -picedove-dev ;\
 		dh_builddeb -plightning ;\
 		dh_builddeb -piceowl-extension ;\
 		dh_builddeb -pcalendar-google-provider ;\
 		for package in `grep -e \
-			'Package: thunderbird-l10n\|Package: lightning-l10n\|Package: icedove-l10n\|Package: iceowl-l10n' debian/control | awk '{print $$2;}'`; do \
+			'Package: puremail-l10n\|Package: lightning-l10n\|Package: icedove-l10n\|Package: iceowl-l10n' debian/control | awk '{print $$2;}'`; do \
 			dh_builddeb -p$$package ;\
 		done ;\
-		sed -i '/thunderbird-dbg/d' debian/files ;\
+		sed -i '/puremail-dbg/d' debian/files ;\
 		sed -i '/icedove-dbg/d' debian/files ;\
 	fi
 
